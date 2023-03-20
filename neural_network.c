@@ -1,3 +1,9 @@
+/*
+Nobody:
+literally nobody:
+people with severe autism:
+*/
+
 /* Librerie utilizzate */
 #include <stdio.h>
 #include <stdlib.h>
