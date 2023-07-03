@@ -2,9 +2,10 @@ import numpy as np
 import tkinter as tk
 
 theta = None
+d = None
 
 def initialize():
-    global theta
+    global theta, d
 
     print('*---------------------------------------------------------------*\n')
     print('Linear regression ML model by @alebarro [Stanford CS229/STATS229]\n')
@@ -15,7 +16,7 @@ def initialize():
     create_matrix_window(n, d+1)
 
 def run_model(dataset):
-    global theta
+    global theta, d
     t_input = input('[SETTINGS] N of iterations (default: 1000): ')
     if t_input == '':
         t = 1000
@@ -32,6 +33,8 @@ def run_model(dataset):
     y = dataset[:, -1]
     theta = np.zeros(x.shape[1])
     theta, cost_history = gradient_descent(x, y, theta, alpha, t)
+    sigma_hat = calculate_sigma(hypothesis(theta,x), y, x.shape[1] - 1)
+    epsilon = log_likelihood(theta, x, y, sigma_hat)
     print(f"[WARNING] Optimized parameters: {theta}")
     print(f"[WARNING] Cost history: {cost_history}")
 
@@ -49,7 +52,7 @@ def run_model(dataset):
         x_input = input('[SETTINGS] New example (x1 x2 ... xd): ')
         x = np.array([1.0] + [float(xi) for xi in x_input.split()])
         x = x.reshape(1, -1)
-        print(f"[WARNING] The expected value of y is: {hypothesis(theta, x)}")
+        print(f"[WARNING] The expected value of y is: {hypothesis(theta, x) + epsilon}")
 
     elif selection == '2':
         quit()
@@ -71,6 +74,16 @@ def gradient_descent(x, y, theta, alpha, t):
         cost_history.append(squared_loss(theta, x, y))
 
     return theta, cost_history
+    
+def log_likelihood(theta, x, y, sigma) -> float:
+    d, n = x.shape[1], len(y)
+    return -n/2 * np.log(2 * np.pi) - n/2 * np.log(sigma**2) - (1/(2*sigma**2)) * sum((y[i] - np.dot(theta, x[i]))**2 for i in range(n))
+    
+def calculate_sigma(y, y_pred, p):
+    n = len(y)
+    rss = np.sum((y - y_pred) ** 2)
+    sigma_hat = np.sqrt(rss / (n - p))
+    return sigma_hat
 
 def create_matrix_window(rows, cols):
     window = tk.Tk()
