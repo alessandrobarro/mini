@@ -31,7 +31,7 @@ def run_model(dataset):
     x = np.c_[np.ones(x.shape[0]), x]
     y = dataset[:, -1]
     theta = np.zeros(x.shape[1])
-    theta, cost_history = gradientDescent(x, y, theta, alpha, t)
+    theta, cost_history = gradient_descent(x, y, theta, alpha, t)
     print(f"[WARNING] Optimized parameters: {theta}")
     print(f"[WARNING] Cost history: {cost_history}")
 
@@ -63,7 +63,7 @@ def squared_loss(theta, x, y):
 def d_squared_loss(theta, x, y):
     return (2/y.size) * np.dot(x.T, (hypothesis(theta, x) - y))
 
-def gradientDescent(x, y, theta, alpha, t):
+def gradient_descent(x, y, theta, alpha, t):
     cost_history = []
 
     for _ in range(t):
