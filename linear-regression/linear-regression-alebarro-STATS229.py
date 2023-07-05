@@ -10,7 +10,7 @@ def initialize():
     print('*---------------------------------------------------------------*\n')
     print('Linear regression ML model by @alebarro [Stanford CS229/STATS229]\n')
     print('*---------------------------------------------------------------*\n')
-    print('[STATUS] Initialization')
+    print('[ACTIVITY] Initialization')
     n = int(input('[SETTINGS] Number of training examples: '))
     d = int(input('[SETTINGS] Number of features: '))
     create_matrix_window(n, d+1)
@@ -37,16 +37,15 @@ def run_model(dataset):
     epsilon = log_likelihood(theta, x, y, sigma_hat)
     print(f"[WARNING] Optimized parameters: {theta}")
     print(f"[WARNING] Cost history: {cost_history}")
-
     print('\n')
-    print('[STATUS] Please select an option')
+    print('[ACTIVITY] Please select an option')
     print('[1] Make a prediction')
     print('[2] Close')
     selection = input('>>> ')
 
     while selection != '1' and selection != '2':
         print('[WARNING] Please select a valid option')
-        selection = input('')
+        selection = input('>>> ')
 
     if selection == '1':
         x_input = input('[SETTINGS] New example (x1 x2 ... xd): ')
@@ -112,6 +111,7 @@ def create_matrix_window(rows, cols):
 
     def deploy():
         dataset = get_matrix()
+        print('[WARNING] Data set successfully deployed')
         run_model(dataset)
 
     button = tk.Button(window, text = 'Deploy', command = deploy)
