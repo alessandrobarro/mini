@@ -61,7 +61,7 @@ def report():
     smtp_server = "smtp.gmail.com"
     email = "youremail"
     password = "yourpass"
-    port = 587
+    port = 587 #std smtp port
 
     context = ssl.create_default_context()
 
