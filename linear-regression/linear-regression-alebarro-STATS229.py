@@ -7,9 +7,9 @@ d = None
 def initialize():
     global theta, d
 
-    print('*---------------------------------------------------------------*\n')
-    print('Linear regression ML model by @alebarro [Stanford CS229/STATS229]\n')
-    print('*---------------------------------------------------------------*\n')
+    print('*-----------------------------------------------------------------------------*\n')
+    print('Linear regression ML model [Stanford CS229/STATS229], student: Alessandro Barro\n')
+    print('*-----------------------------------------------------------------------------*\n')
     print('[ACTIVITY] Initialization')
     n = int(input('[SETTINGS] Number of training examples: '))
     d = int(input('[SETTINGS] Number of features: '))
