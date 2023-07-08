@@ -1,4 +1,4 @@
-This code implements linear regression, one of the fundamental linear model in ML.
+This code implements linear regression, one fundamental linear model in ML.
 
 The input dataset is provided by the user, who decides the number of features per example.
 
