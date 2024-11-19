@@ -1,1 +1,1 @@
-This code provides a basic wavelets decomposition experimentation built by following an online tutorial. We utilize the library pywv, which allow us to perform wavelet transform on a signal (.wav) file.
+This code provides a basic wavelets decomposition experimentation built by following an online tutorial. It utilizes the library pywv, which allows to perform wavelet transform on a signal stored in a (.wav) file.
